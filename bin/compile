@@ -183,6 +183,7 @@ echo "-----> Vendoring binaries..."
 vendor_binary "cairo-1.12.8.tgz" "/app/.heroku/vendor/cairo-1.12.8" "include"
 vendor_binary "pixman-0.28.0.tgz" "/app/.heroku/vendor/pixman-0.28.0" "include"
 vendor_binary "libffi-3.0.9.tgz" "/app/.heroku/vendor/libffi-3.0.9" "lib/libffi-3.0.9/include"
+cp /app/.heroku/vendor/libffi-3.0.9/lib/*.so.* /app/.heroku/python/lib
 vendor_binary "pango-1.33.tgz" "/app/.heroku/vendor/pango-1.33" "include"
 
 # Install Mercurial if it appears to be required.
