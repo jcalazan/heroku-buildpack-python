@@ -24,6 +24,9 @@ VIRTUALENV_LOC=".heroku/venv"
 LEGACY_TRIGGER="lib/python2.7"
 PROFILE_PATH="$BUILD_DIR/.profile.d/python.sh"
 
+# Amazon AWS config.
+S3_URL="https://s3-us-west-2.amazonaws.com/weasyprint"
+
 # Python version. This will be used in the future to specify custom Pythons.
 DEFAULT_PYTHON_VERSION="python-2.7.3"
 PYTHON_EXE="/app/.heroku/python/bin/python"
@@ -153,6 +156,33 @@ hash -r
 # Pylibmc support.
 # See [`bin/steps/pylibmc`](pylibmc.html).
 source $BIN_DIR/steps/pylibmc
+
+# Install vendor binaries.
+function vendor_binary() {
+  binary="$1"
+  path="$2"
+  include="$3"
+
+  echo "-----> Fetching $binary"
+  echo $path
+  mkdir -p $path
+  package="$S3_URL/$binary"
+  curl $package -s -o - | tar xz -C $path -f -
+  
+  echo "-----> Exporting $binary build and include paths"
+
+  export CPPPATH="$path/$include:$CPPPATH"
+  export CPATH="$path/$include:$CPATH"
+  export LIBRARY_PATH="$path/lib:$LIBRARY_PATH"
+  export PKG_CONFIG_PATH="$path/lib/pkgconfig:$PKG_CONFIG_PATH"
+  export CFLAGS="-I$path/$include:$CFLAGS"
+}
+
+echo "-----> Vendoring binaries"
+vendor_binary "cairo-1.12.8.tgz" "$1/vendor/cairo-1.12.8" "include"
+vendor_binary "pixman-0.28.0.tgz" "$1/vendor/pixman-0.28.0" "include"
+vendor_binary "libffi-3.0.9.tgz" "$1/vendor/libffi-3.0.9" "lib/libffi-3.0.9/include"
+vendor_binary "pango-1.33.tgz" "$1/vendor/pango-1.33" "include"
 
 # Install Mercurial if it appears to be required.
 if (grep -Fiq "hg+" requirements.txt) then
