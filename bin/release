@@ -10,11 +10,6 @@ MANAGE_FILE=${MANAGE_FILE:2}
 cat <<EOF
 ---
 config_vars:
-  CPPPATH: /app/.heroku/vendor/pango-1.33/include:/app/.heroku/vendor/libffi-3.0.9/lib/libffi-3.0.9/include:/app/.heroku/vendor/cairo-1.12.8/include:/app/.heroku/vendor/pixman-0.28.0/include:$CPPPATH
-  CPPATH: /app/.heroku/vendor/pango-1.33/include:/app/.heroku/vendor/libffi-3.0.9/lib/libffi-3.0.9/include:/app/.heroku/vendor/cairo-1.12.8/include:/app/.heroku/vendor/pixman-0.28.0/include:$CPPATH
-  LIBRARY_PATH: /app/.heroku/vendor/pango-1.33/lib:/app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/cairo-1.12.8/lib:/app/.heroku/vendor/pixman-0.28.0/lib:$LIBRARY_PATH
-  PKG_CONFIG_PATH: /app/.heroku/vendor/pango-1.33/lib/pkgconfig:/app/.heroku/vendor/cairo-1.12.8/lib/pkgconfig:/app/.heroku/vendor/pixman-0.28.0/lib/pkgconfig:$PKG_CONFIG_PATH
-  CFLAGS: -I/app/.heroku/vendor/pango-1.33/include:-I/app/.heroku/vendor/libffi-3.0.9/lib/libffi-3.0.9/include:-I/app/.heroku/vendor/cairo-1.12.8/include:-I/app/.heroku/vendor/pixman-0.28.0/include:$CPPATH
 
 EOF
 
