@@ -187,7 +187,7 @@ function vendor_binary() {
 }
 
 echo "-----> Vendoring binaries..."
-VENDOR_DIR="/app/vendor"
+VENDOR_DIR="/app/.heroku/vendor"
 vendor_binary "cairo-1.12.8.tgz" "$VENDOR_DIR/cairo-1.12.8" "include"
 vendor_binary "pixman-0.28.0.tgz" "$VENDOR_DIR/pixman-0.28.0" "include"
 vendor_binary "libffi-3.0.9.tgz" "$VENDOR_DIR/libffi-3.0.9" "lib/libffi-3.0.9/include"
@@ -213,10 +213,10 @@ done
 set-env PATH '$HOME/.heroku/python/bin:$PATH'
 set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
-set-default-env LIBRARY_PATH /app/vendor/libffi-3.0.9/lib:/app/vendor/pango-1.33/lib
-set-default-env LD_LIBRARY_PATH /app/vendor/libffi-3.0.9/lib:/app/vendor/pango-1.33/lib
-#set-default-env LIBRARY_PATH /app/.heroku/vendor/lib
-#set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/lib
+#set-default-env LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib
+#set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib
+set-default-env LIBRARY_PATH /app/.heroku/vendor
+set-default-env LD_LIBRARY_PATH /app/.heroku/vendor
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
