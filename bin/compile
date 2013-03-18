@@ -213,8 +213,8 @@ done
 set-env PATH '$HOME/.heroku/python/bin:$PATH'
 set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
-set-default-env LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib:app/.heroku/vendor/pixman-0.28.0/lib
-set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib:/app/.heroku/vendor/pixman-0.28.0/lib
+set-default-env LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib:/app/.heroku/vendor/cairo-1.12.8/lib:/app/.heroku/vendor/pixman-0.28.0/lib
+set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/libffi-3.0.9/lib:/app/.heroku/vendor/pango-1.33/lib:/app/.heroku/vendor/cairo-1.12.8/lib:/app/.heroku/vendor/pixman-0.28.0/lib
 #set-default-env LIBRARY_PATH /app/.heroku/vendor/lib
 #set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/lib
 set-default-env LANG en_US.UTF-8
